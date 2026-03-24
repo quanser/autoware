@@ -5,6 +5,13 @@
 
 set -e
 
+# Configure APT sources and ROS repository for QCar2
+sudo sed -i '50s/^/# /' /etc/apt/sources.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654
+sudo apt update && sudo apt install -y curl gnupg2 lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list
+
 # Function to print help message
 print_help() {
     echo "Usage: setup-dev-env.sh [OPTIONS]"
@@ -202,7 +209,9 @@ fi
 # Install ansible
 python3 -m pipx ensurepath
 export PATH="${PIPX_BIN_DIR:=$HOME/.local/bin}:$PATH"
-pipx install --include-deps --force "ansible==10.*"
+sudo apt install python3.8-venv -y
+# QCar2 only compatible with ansible 6.*
+pipx install --include-deps --force "ansible==6.*"
 
 # Install ansible collections
 echo -e "\e[36m"ansible-galaxy collection install -f -r "$SCRIPT_DIR/ansible-galaxy-requirements.yaml" "\e[m"

@@ -127,3 +127,7 @@ repositories:
     type: git
     url: https://github.com/tier4/agnocast.git
     version: 2.3.1
+  universe/external/qcar2:
+    type: git
+    url: https://github.com/quanser/qcar2_autoware.git
+    version: main
