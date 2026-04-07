@@ -1,3 +1,37 @@
+# QCar2 Autoware
+
+## Overview
+
+This repository provides a customized **Autoware meta-repository** configuration for the **QCar2**.
+
+It extends the standard Autoware workspace by including custom setup scripts and additional repositories required to run Autoware with QCar2 hardware.
+
+Follow the guides below to set up and run QCar2 Autoware.
+
+- [QCar2 Autoware Installation Guide](./docs/install.md)  
+  Step-by-step instructions to install dependencies, configure Docker, and build Autoware.
+
+- [Run the Example](./docs/run_example.md)  
+  Instructions to launch Autoware and run the SDCS example.
+
+
+## Package Architecture
+
+
+<img src="./docs/images/architecture.png" alt="QCar2-Autoware architecture" width="820">
+
+
+The QCar2-Autoware package separates functions between Docker-based Autoware components and QCar2 hardware components.
+
+### Runs inside the Autoware development container:
+- Autoware.universe stack
+- QCar2 interface packages 
+
+### Runs directly on the QCar2:
+- Sensor drivers
+- Localization system
+- Vehicle hardware control nodes
+
 # Autoware - the world's leading open-source software project for autonomous driving
 
 ![Autoware_RViz](https://user-images.githubusercontent.com/63835446/158918717-58d6deaf-93fb-47f9-891d-e242b02cba7b.png)
