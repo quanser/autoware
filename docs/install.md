@@ -7,7 +7,7 @@ Before installing Autoware to your QCar2, the following prerequisites need to be
 
 1. Install [CycloneDDS](./cyclonedds.md)
 
-2. Set up [Quanser Academic Resources](./qar.md)
+2. Set up [Quanser Academic Resources](./quanser_academic_resources.md)
 
 ## Autoware Universe Docker Installation
 The following setup instruction for QCar2 is distilled from [Autoware Foundation](https://autowarefoundation.github.io/autoware-documentation/main/installation/autoware/docker-installation/)
