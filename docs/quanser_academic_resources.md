@@ -45,4 +45,9 @@ source install/setup.bash
 ```
 From here you can run QCar2 hardware nodes.
 
+**Note:** You may observe some warnings related to conflicting dependencies in the standard error output. They are expected and do not affect the functionality of the nodes.
+
+---
+
 ## [Back to Installation Guide](./install.md)
+

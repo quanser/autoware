@@ -24,7 +24,7 @@ Follow the guides below to set up and run QCar2 Autoware.
 The QCar2-Autoware package separates functions between Docker-based Autoware components and QCar2 hardware components.
 
 ### Runs inside the Autoware development container:
-- Autoware.universe stack
+- Autoware stack
 - QCar2 interface packages 
 
 ### Runs directly on the QCar2:

@@ -18,16 +18,14 @@ The vehicle orientation θ is defined as rotation about the vertical axis. Posit
 
 The coordinate system used in the SDCS roadmap is illustrated in the figure below, with two example poses.
 
-- [ 0.0 , 2.0 , -π/2 ] (red arrow)
+- [ 0.0 , 2.0 , -π/2 ] (solid arrow) 
 
-- [ 0.0 , 0.0 , -π/2 ] (blue arrow)
+- [ 0.0 , 0.0 , -π/2 ] (dashed arrow)
 
-The wheel positions corresponding to [ 0.0 , 0.0 ] and [ 0.0 , 2.0 ]
-are also marked directly on the physical roadmap.  
+The wheel positions corresponding to [ 0.0 , 0.0 ] and [ 0.0 , 2.0 ] are also marked directly on the physical roadmap.  
 These reference points are used to help align the vehicle during calibration.
 
-<img src="./images/SDCS_RoadMap.PNG" alt="QCar2-Autoware architecture" width="480">
-
+<img src="./images/sdcs_roadmap.png" alt="QCar2-Autoware architecture" width="480">
 
 ---
 
@@ -37,12 +35,12 @@ Before launching:
 
 1. Place the QCar2 inside the SDCS roadmap.
 2. Position the vehicle for pose [ 0.0 , 2.0 , -π/2 ] and align wheels with markings.
-4. Connect to the QCar2 per [Connectivity Guide](https://github.com/quanser/Quanser_Academic_Resources/blob/dev-qcar/3_user_manuals/qcar2/user_manual_connectivity.pdf).   
+3. Connect to the QCar2 as per the [Connectivity Guide](https://github.com/quanser/Quanser_Academic_Resources/blob/dev-qcar/3_user_manuals/qcar2/user_manual_connectivity.pdf).   
 It is recommended to connect to the QCar2 via Remote Desktop.
 
 ### 2. Running Hardware Nodes
 
-The localization and hardware nodes are a part of Quanser Academic Resources. Open a terminal and navigate to the QCar2 hardware workspace:
+The localization and hardware nodes are included in Quanser Academic Resources. Open a terminal and navigate to the QCar2 hardware workspace:
 
 ```bash
 cd ~/Documents/Quanser/5_research/sdcs/qcar2/ros2
@@ -58,9 +56,9 @@ Place the QCar2 in the calibration pose `[0.0, 2.0, -π/2]` marked on the roadma
 ```bash
 ros2 launch qcar2_nodes qcar2_scan_match_launch.py calibrate:=true
 ```
-This will capture a reference scan, save the reference scan and automatically begin localization. You do not need to restart the node.
+This will capture a reference scan, save the reference scan and automatically begin localization.
 
-In future runs when a reference scan exists:
+To reuse the last saved reference scan, run the following command:
 ```bash
 ros2 launch qcar2_nodes qcar2_scan_match_launch.py calibrate:=false
 ```
@@ -68,7 +66,7 @@ ros2 launch qcar2_nodes qcar2_scan_match_launch.py calibrate:=false
 
 ### 3. Launch Autoware in Docker
 
-Open a second terminal and navigate to the Autwoware workspace and enter the Docker container:
+Open a second terminal and navigate to the Autoware workspace and enter the Docker container:
 ```bash
 cd ~/Documents/autoware
 ./docker/run.sh --devel --no-nvidia
@@ -91,7 +89,7 @@ Once all systems are running, the map and the vehicle should be visible in RViz,
 
 ### 4. Set a Valid Goal Pose
 
-To move the vehicle, click `2D Goal Pose` in the top banner of RViz and select a goal pose on the map.
+To move the vehicle, first click `2D Goal Pose` in the top banner of RViz and then move your mouse to the desired position. Hold down the mouse button, drag and release in the direction of your desired orientation to select a goal pose on the map.
 
 For a goal pose to be valid, it should be near the center of a lane and be aligned with lane direction.
 Invalid goals will produce no trajectory.
@@ -110,7 +108,11 @@ The QCar2 will start driving shortly.
 
 **IMPORTANT:** Always start the QCar2 hardware nodes before launching the Autoware packages.
 
+To stop or close Autoware, follow these steps:
 
-
+1. Click `Stop` in the control panel to stop the vehicle.
+2. Stop the Autoware packages by pressing `Ctrl+C` in the terminal where they are running.
+3. Exit the Docker container by typing `exit` in the terminal.
+4. Stop the QCar2 hardware nodes by pressing `Ctrl+C` in the terminal where they are running.
 
 
